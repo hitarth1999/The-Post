@@ -47,12 +47,16 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        $tags = [];
         $request->validated();
+        foreach($request->tags as $tag){
+            array_push($tags, decrypt($tag));
+        }
         try{
             Post::create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'tags' => $request->tags,
+                'tags' => $tag,
                 'author_id' => Auth::user()->id,
                 'post_date' => $request->post_date,
             ]);
@@ -90,14 +94,18 @@ class PostController extends Controller
      */
     public function update(PostRequest $request)
     {
+        $tags = [];
         $request->validated();
+        foreach($request->tags as $tag){
+            array_push($tags, decrypt($tag));
+        }
         try{
             $post = Post::where('id', decrypt($request->post))->first();
             if($post->author_id == Auth::user()->id){
                 $post->update([
                     'title' => $request->title,
                     'description' => $request->description,
-                    'tags' => $request->tags,
+                    'tags' => $tags,
                     'post_date' => $request->post_date,
                 ]);
             }

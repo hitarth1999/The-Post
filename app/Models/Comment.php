@@ -16,10 +16,10 @@ class Comment extends Model
     ];
 
     public function post(){
-        return $this->belongsTo('posts');
+        return $this->belongsTo(Post::class)->orderBy('created_at','DESC');
     }
 
     public function user(){
-        return $this->belongsTo('users');
+        return $this->belongsTo(User::class);
     }
 }

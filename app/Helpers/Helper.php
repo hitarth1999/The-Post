@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Tag;
+
 if(!function_exists('genArrayFromArray')){
     //Generates an array of random length from a given array.
     function genArrayFromArray($arr, $n, $col = "id") {
@@ -29,5 +31,12 @@ if(!function_exists('short_string')){
     function short_string($str, $len = 150, $suffix = '')
     {
         return substr($str, 0, $len - 3) . '...'.'<span class="desc-suffix">'.ucwords($suffix).'</span>';
+    }
+}
+
+if(!function_exists('getTagName')){
+    function getTagName($tag)
+    {
+        return Tag::where('id', $tag)->first()->title;
     }
 }
