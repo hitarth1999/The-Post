@@ -16,10 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/filter', [HomeController::class,'filter'])->name('home.filter');
 
 Auth::routes();
 
 //Post Routes
 Route::group(['controller' => PostController::class, 'prefix' => 'post', 'as' => 'post.'], function(){
-    Route::get('/{post}', 'index')->name('index');
+    Route::get('/view/{post}', 'index')->name('index');
+    Route::group(['middleware' => 'auth'], function(){
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{post}', 'edit')->name('edit');
+        Route::put('update/{post}', 'update')->name('update');
+        Route::delete('/destroy/{post}', 'destroy')->name('destroy');
+    });
 });

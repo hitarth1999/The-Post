@@ -13,11 +13,13 @@ class Post extends Model
         'author_id',
         'title',
         'description',
-        'tags'
+        'tags',
+        'post_date'
     ];
 
     protected $casts = [
         'tags' => 'array',
+        'post_date' => 'date',
     ];
 
     public function comments(){

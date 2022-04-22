@@ -52,17 +52,31 @@
     --bs-body-bg: #f8fafc;
 }
 
-.btn-primary{
+.btn-c-primary{
     color: var(--bs-primary);
 }
 
-.btn-primary:hover{
+.btn-c-primary:hover{
     color:white;
 }
+
+/* .create-post{
+    padding-left: 13.5rem;
+} */
+
 .card{
     cursor: pointer;
 }
 
-.desc-suffix{
+.desc-suffix, .comments-counter{
     color:rgb(31, 118, 190);
+}
+
+.post-desc p{
+    text-align: justify;
+    margin-bottom: 0.5em;
+}
+
+.form-group{
+    padding: 10px;
 }

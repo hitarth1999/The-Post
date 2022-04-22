@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title')->unique()->comment('Post Title');
             $table->longText('description')->comment('Post Content');
             $table->json('tags')->comment('Tags to filter posts');
+            $table->dateTime('post_date');
             $table->timestamps();
         });
     }

@@ -16,13 +16,14 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $tags = Tag::select('title')->get()->toArray();
+        $tags = Tag::select('id')->get()->toArray();
         
         return [
             'author_id' => User::inRandomOrder()->first()->id,
             'title' => ucwords($this->faker->unique()->word),
             'description' => '<p>'.$this->faker->paragraphs(5, true).'</p><p>'.$this->faker->paragraphs(5, true).'</p>',
-            'tags' => genArrayFromArray($tags, rand(1, count($tags)), 'title'),
+            'tags' => genArrayFromArray($tags, rand(1, count($tags))),
+            'post_date' => now(),
         ];
     }
 }
