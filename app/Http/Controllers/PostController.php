@@ -17,9 +17,7 @@ class PostController extends Controller
         $this->tags = Tag::orderBy('title')->get();
     }
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a specific post.
      */
     public function index($post)
     {
@@ -28,10 +26,7 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Redirect to post create page.
      */
     public function create(Request $request)
     {
@@ -40,10 +35,7 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Store a newly created post in database.
      */
     public function store(PostRequest $request)
     {
@@ -68,10 +60,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * Show the form for editing the specified post.
      */
     public function edit($post)
     {
@@ -87,10 +76,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Update the specified post in database.
      */
     public function update(PostRequest $request)
     {
@@ -112,16 +98,12 @@ class PostController extends Controller
             return redirect()->route('home')->withSuccess(['Post Updated.']);
         }
         catch(\Exception $e){
-            dd($e->getMessage());
             return redirect()->back()->withErrors([$e->getMessage()]);
         }
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * Remove the specified post from database if no comments are given.
      */
     public function destroy($post)
     {

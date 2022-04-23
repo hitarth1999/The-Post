@@ -17,9 +17,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Show the application home page with post listing.
      */
     public function index()
     {
@@ -28,6 +26,9 @@ class HomeController extends Controller
         return view('home', compact('posts','tags'));
     }
 
+    /**
+     * Filter Post Listing on home page.
+     */
     public function filter(Request $request){
         if($request->filter == 'all'){
             return redirect()->route('home');

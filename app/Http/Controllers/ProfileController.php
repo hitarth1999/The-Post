@@ -11,21 +11,15 @@ use Illuminate\Validation\Rules\Password;
 class ProfileController extends Controller
 {
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show the form for editing the specified user profile.
      */
     public function edit()
     {
-        //Redirect to profile edit page.
         return view('profile.edit');        
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Update the specified user profile in database.
      */
     public function update(Request $request)
     {
