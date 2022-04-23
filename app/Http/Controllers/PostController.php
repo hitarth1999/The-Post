@@ -56,7 +56,7 @@ class PostController extends Controller
             Post::create([
                 'title' => $request->title,
                 'description' => $request->description,
-                'tags' => $tag,
+                'tags' => $tags,
                 'author_id' => Auth::user()->id,
                 'post_date' => $request->post_date,
             ]);
