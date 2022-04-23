@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     {
         $validate = [
             'title' => 'required|string|unique:posts,title',
-            'description' => 'required|string',
+            'description' => 'required|string|min:500',
             'tags' => 'required',
             'post_date' => 'required|date',
         ];
@@ -50,6 +50,7 @@ class PostRequest extends FormRequest
         return [
             'required' => 'The :attribute is required.',
             'unique' => 'The value for the :attribute already exists.',
+            'min' => 'The description should be atleast 500 charcters long.',
         ];
     }
 }
