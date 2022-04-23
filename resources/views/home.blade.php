@@ -34,7 +34,7 @@
                                     <div>{{$post->title}}</div>
                                 </div>
                                 <div class="col-sm-3 col-3 col-md-3" style="direction:rtl">
-                                    <span class="px-2"><a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this post: {{route('post.index',['post' => encrypt($post->id)])}}"><i class="fa-solid fa-share-nodes"></i></span>
+                                    <span class="px-2"><a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this post: {{route('post.index',['post' => encrypt($post->id)])}}"><i class="fa-solid fa-share-nodes"></i></a></span>
                                     @auth
                                         @if(Auth::user()->id == $post->author_id)
                                             @if($post->comments->count() == 0)
