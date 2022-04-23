@@ -12,7 +12,7 @@ if(!function_exists('genArrayFromArray')){
             return [];
         }
         while ($n > 0) {
-            $x = rand(0,$len);
+            $x = rand(0,$len-1);
             array_push($result, $arr[in_array($arr[$x], $taken) ? $taken[$x] : $x][$col]);
             $taken[$x] = in_array(--$len, $taken) ? $taken[$len] : $len;
             $n--;
