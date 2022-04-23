@@ -37,4 +37,5 @@ $ git clone https://github.com/hitarth1999/The-Post.git
 -   Copy .env.example to .env and modify it to your needs
 -   Generate an app key `php artisan key:generate`
 -   Migrate the database with seed `php artisan migrate:fresh --seed`
+-   The password for users created by seeding is "password"
 -   Run the server `php artisan serve`
