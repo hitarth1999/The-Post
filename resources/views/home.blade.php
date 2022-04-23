@@ -10,6 +10,9 @@
                     @forelse ($tags as $tag)
                         @if($loop->first)
                             <option selected disabled hidden>Filter Posts by Tags</option>
+                            @if(isset($currentFilter))
+                                <option value="all">Select All</option>
+                            @endif
                         @endif
                         <option value="{{$tag->title}}" @if(isset($currentFilter) && $tag->title == $currentFilter) selected @endif>{{$tag->title}}</option>
                     @empty

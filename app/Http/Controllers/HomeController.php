@@ -29,6 +29,9 @@ class HomeController extends Controller
     }
 
     public function filter(Request $request){
+        if($request->filter == 'all'){
+            return redirect()->route('home');
+        }
         $currentFilter = isset($request->filter) ? $request->filter : session()->get('filter');
         $tag = Tag::where('title', $currentFilter)->first()->id;
         if(isset($request->filter)) session()->put('filter', $currentFilter);
