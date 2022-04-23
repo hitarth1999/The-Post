@@ -29,7 +29,28 @@
                 <div class="grid grid-cols-1">
                     <div class="p-6 border-t border-gray-200 border-t-0 border-l">
                         <div class="grid grid-cols-1">
-                            <div class="p-3 pb-0 text-lg leading-7 font-semibold underline text-gray-900">{{$post->title}}</div>
+                            <div class="row p-3 pb-0 leading-7 text-gray-900">
+                                <div class="col-md-9 col-9 col-sm-9 text-lg underline font-semibold">
+                                    <div>{{$post->title}}</div>
+                                </div>
+                                <div class="col-sm-3 col-3 col-md-3" style="direction:rtl">
+                                    <span class="px-2"><i class="fa-solid fa-share-nodes"></i></span>
+                                    @auth
+                                        @if(Auth::user()->id == $post->author_id)
+                                            @if($post->comments->count() == 0)
+                                                <form style="all:unset" action="{{route('post.destroy',['post' => encrypt($post->id)])}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this post?')">
+                                                        <span class="px-2"><i class="fa-regular fa-trash-can"></i></span>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                            <span class="px-2"><a href="{{route('post.edit',['post' => encrypt($post->id)])}}"><i class="fa-regular fa-pen-to-square"></i></a></span>
+                                        @endif
+                                    @endauth
+                                </div>
+                            </div>
                             <div class="p-3 pt-0 text-sm font-thin text-black">By {{$post->user->name}}</div>
                         </div>
 

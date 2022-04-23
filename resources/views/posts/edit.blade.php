@@ -42,3 +42,13 @@
     </div>
 </div>
 @endsection
+
+
+@section('scripts')
+    <script src="//cdn.ckeditor.com/4.18.0/basic/ckeditor.js"></script>
+    <script>
+        $(document).ready(function(){
+            CKEDITOR.replace('description');
+        })
+    </script>
+@endsection

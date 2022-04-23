@@ -12,7 +12,7 @@
                     <form action="{{route('post.destroy',['post' => encrypt($post->id)])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="Delete Post">Delete Post</button>
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this post?')" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150" aria-label="Delete Post">Delete Post</button>
                     </form>
                     @endif
                 @endif
@@ -33,10 +33,14 @@
                     </div>
                     <div class="px-3 pt-1 pb-3 inline-block">
                         @forelse ($post->tags as $tag)
-                            <span class="post-tags px-2">{{getTagName($tag)}}</span>
+                            <span class="post-tags px-2" onclick=formSubmit(this)>{{getTagName($tag)}}</span>
                         @empty
-                            
+                        
                         @endforelse
+                        <form action="{{route('home.filter')}}" method="get" id="filter-form">
+                            @csrf
+                            <input type="hidden" name="filter" id="filter">
+                        </form>
                     </div>
                 </div>
                 <div class="p-6 pt-0">
@@ -103,6 +107,11 @@
                     }
                 }
             });
+        }
+
+        function formSubmit(obj){
+            $('#filter').val($(obj).html());
+            $('#filter-form').submit();
         }
     </script>
 @endsection
