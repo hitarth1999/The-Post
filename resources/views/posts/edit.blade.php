@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-        <a href="{{url()->previous()}}" aria-label="Back" class="px-4 py-2 mr-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">Back</a>
+        <a href="{{route('home')}}" aria-label="Back" class="px-4 py-2 mr-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">Back</a>
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1">
                 <div class="p-6 border-t border-gray-200 border-t-0 border-l">

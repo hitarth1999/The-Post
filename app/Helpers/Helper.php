@@ -30,7 +30,11 @@ if(!function_exists('lipsum')){
 if(!function_exists('short_string')){
     function short_string($str, $len = 150, $suffix = '')
     {
-        return substr($str, 0, $len - 3) . '...'.'<span class="desc-suffix">'.ucwords($suffix).'</span>';
+        $span = '...'.'<span class="desc-suffix">'.ucwords($suffix).'</span>';
+        if(strlen($str) <= $len){
+            $span = '';
+        }
+        return substr($str, 0, $len - 3) . $span;
     }
 }
 
